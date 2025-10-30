@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Definición del tipo personalizado -->
+  <xs:simpleType name="tipoSexo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="H"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="alumno">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nombre" type="xs:string"/>
+        <xs:element name="dni" type="xs:string"/>
+        <xs:element name="direccion" type="xs:string"/>
+        <xs:element name="edad">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="16"/>
+              <xs:maxInclusive value="25"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <!-- Uso del tipo personalizado -->
+        <xs:element name="sexo" type="tipoSexo"/>
+        <xs:element name="telefono" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
